@@ -1,7 +1,22 @@
 (function () {
   'use strict';
 
-  var D = window.DATA || { projects: [], yearly: [], ffg: [] };
+  // Data lives in data/*.json — edit those files, the page loads them on open.
+  function load(path) {
+    return fetch(path, { cache: 'no-cache' }).then(function (r) {
+      if (!r.ok) throw new Error(path + ': ' + r.status);
+      return r.json();
+    });
+  }
+  Promise.all([load('data/projects.json'), load('data/yearly.json'), load('data/ffg2025.json')])
+    .then(function (res) { init({ projects: res[0], yearly: res[1], ffg: res[2] }); })
+    .catch(function (err) {
+      var lead = document.getElementById('lead');
+      lead.textContent = 'Не удалось загрузить данные (' + err.message + '). Возможно, в JSON-файле ошибка — например, лишняя или пропущенная запятая.';
+      lead.style.color = 'var(--warn-fg)';
+    });
+
+function init(D) {
   var P = D.projects;
   var INTERNAL = 'Внутренний перечень';
   var FRHC = 'Отчёт FRHC';
@@ -470,4 +485,5 @@
   }
   renderEsg();
   render();
+}
 })();

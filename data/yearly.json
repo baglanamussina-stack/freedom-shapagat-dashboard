@@ -1,1 +1,41 @@
-[{"fy": 2024, "fy_label": "FY2024", "esg_total_kzt_bn": 12.41, "fund_total_kzt_bn": 3.53, "employees": 5348, "turnover_pct": 33, "scope1_t": 1541, "scope2_t": 2673, "scope3_ops_t": 7315, "financed_mt": 2.779, "source": "Отчёт FY2024: с. 40–41, 50, 63"}, {"fy": 2025, "fy_label": "FY2025", "esg_total_kzt_bn": 27.87, "fund_total_kzt_bn": null, "employees": 7612, "turnover_pct": 32, "scope1_t": 2484, "scope2_t": 3476, "scope3_ops_t": 10050, "financed_mt": 3.5, "source": "Отчёт FY2025: с. 66–67, 78, 93"}, {"fy": 2026, "fy_label": "FY2026", "esg_total_kzt_bn": 36.71, "fund_total_kzt_bn": null, "employees": 9567, "turnover_pct": 36.2, "scope1_t": 3187, "scope2_t": 4910, "scope3_ops_t": null, "financed_mt": 2.518, "source": "Отчёт FY2026: с. 68–69, 80, 98"}]
+[
+  {
+    "fy": 2024,
+    "fy_label": "FY2024",
+    "esg_total_kzt_bn": 12.41,
+    "fund_total_kzt_bn": 3.53,
+    "employees": 5348,
+    "turnover_pct": 33,
+    "scope1_t": 1541,
+    "scope2_t": 2673,
+    "scope3_ops_t": 7315,
+    "financed_mt": 2.779,
+    "source": "Отчёт FY2024: с. 40–41, 50, 63"
+  },
+  {
+    "fy": 2025,
+    "fy_label": "FY2025",
+    "esg_total_kzt_bn": 27.87,
+    "fund_total_kzt_bn": null,
+    "employees": 7612,
+    "turnover_pct": 32,
+    "scope1_t": 2484,
+    "scope2_t": 3476,
+    "scope3_ops_t": 10050,
+    "financed_mt": 3.5,
+    "source": "Отчёт FY2025: с. 66–67, 78, 93"
+  },
+  {
+    "fy": 2026,
+    "fy_label": "FY2026",
+    "esg_total_kzt_bn": 36.71,
+    "fund_total_kzt_bn": null,
+    "employees": 9567,
+    "turnover_pct": 36.2,
+    "scope1_t": 3187,
+    "scope2_t": 4910,
+    "scope3_ops_t": null,
+    "financed_mt": 2.518,
+    "source": "Отчёт FY2026: с. 68–69, 80, 98"
+  }
+]
