@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дашборд Freedom Шапағат</title>
+<meta name="description" content="Благотворительные, социальные и экологические проекты фонда Freedom Шапағат и ESG-показатели Freedom Holding Corp.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Проекты Freedom Шапағат и ESG-показатели Freedom Holding</h1>
+      <p class="lead" id="lead">—</p>
+    </div>
+    <button class="btn ghost" id="themeBtn" type="button" title="Сменить тему">◐ Тема</button>
+  </header>
+
+  <section class="tiles" id="tiles" aria-label="Ключевые цифры"></section>
+
+  <section class="filters" aria-label="Фильтры">
+    <div class="row">
+      <label>Источник
+        <select id="fSource">
+          <option value="internal">Внутренний перечень</option>
+          <option value="frhc">Отчёты FRHC</option>
+          <option value="both">Оба источника</option>
+        </select>
+      </label>
+      <label>Период
+        <select id="fPeriod">
+          <option value="fact">Факт, все годы</option>
+          <option value="all">Все годы и план</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="План 2026–2027">План 2026–2027</option>
+          <option value="FY2024">FY2024</option>
+          <option value="FY2025">FY2025</option>
+          <option value="FY2026">FY2026</option>
+        </select>
+      </label>
+      <label class="grow">Поиск
+        <input id="fSearch" type="search" placeholder="Название, сокращение (кфш, tfq), город, плательщик…" autocomplete="off">
+      </label>
+    </div>
+    <div class="row">
+      <label>Направление <select id="fCat"></select></label>
+      <label>Страна <select id="fCountry"></select></label>
+      <label>Город <select id="fCity"></select></label>
+      <label>Статус <select id="fStatus"></select></label>
+      <label class="check"><input type="checkbox" id="fFund"> Только фонд Freedom Шапағат</label>
+      <button class="btn" id="resetBtn" type="button">Сбросить</button>
+    </div>
+    <div id="chips" class="chips"></div>
+    <div id="warn" class="warn" hidden>Выбраны оба источника: они пересекаются, поэтому суммы ориентировочные.</div>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="projects" class="active">Проекты</button>
+    <button role="tab" data-tab="geo">Города и страны</button>
+    <button role="tab" data-tab="multi">Динамика по годам</button>
+    <button role="tab" data-tab="esg">ESG-показатели</button>
+  </nav>
+
+  <main>
+    <section class="tab" id="tab-projects">
+      <div class="grid3">
+        <div class="card"><h2>Суммы по направлениям, млн ₸</h2><div id="chCat" class="hbars"></div><p class="hint">Клик по полосе — фильтр по направлению</p></div>
+        <div class="card"><h2>Внутренний перечень по годам, млрд ₸</h2><div id="chInternal" class="vbars"></div><p class="hint">Факт 2023–2025 и план 2026–2027. Клик — выбор периода</p></div>
+        <div class="card"><h2>Внешние ESG-расходы группы, млрд ₸</h2><div id="chFrhc" class="vbars"></div><p class="hint">Официальные итоги отчётов FRHC. Клик — выбор периода</p></div>
+      </div>
+      <div class="card">
+        <div class="cardhead"><h2>Все проекты</h2><span id="counter" class="muted"></span></div>
+        <div class="tablewrap tall"><table id="tblProjects" class="data"></table></div>
+        <p class="hint">Клик по строке — все записи этого проекта за все годы из обоих источников. Строки «в т.ч.» (курсив) не суммируются.</p>
+      </div>
+    </section>
+
+    <section class="tab" id="tab-geo" hidden>
+      <div class="grid2">
+        <div class="card"><h2>Число проектов по странам</h2><div id="chCountry" class="hbars"></div><p class="hint">Клик — фильтр по стране</p></div>
+        <div class="card"><h2>Рейтинг городов</h2><div class="tablewrap tall"><table id="tblCities" class="data"></table></div><p class="hint">Клик по строке — проекты города. «Вся страна», «Регионы» и «—» не считаются городами.</p></div>
+      </div>
+    </section>
+
+    <section class="tab" id="tab-multi" hidden>
+      <div class="card">
+        <div class="cardhead"><h2>Проекты, которые встречаются в 2+ периодах</h2><span id="multiCounter" class="muted"></span></div>
+        <div class="tablewrap tall"><table id="tblMulti" class="data"></table></div>
+        <p class="hint">Суммы в млн ₸. Итог по строке не считается: внутренний перечень и отчёты пересекаются. Клик по строке — все записи проекта.</p>
+      </div>
+    </section>
+
+    <section class="tab" id="tab-esg" hidden>
+      <div class="card"><h2>Группа Freedom Holding Corp. по финансовым годам</h2><div class="tablewrap"><table id="tblYearly" class="data"></table></div>
+        <p class="hint">Финансовый год FRHC: 1 апреля – 31 марта. Финансируемые выбросы FY2026 — по новой методологии.</p></div>
+      <div class="card"><h2>Freedom Finance Global PLC — отчёт об устойчивом развитии 2025</h2><div class="tablewrap"><table id="tblFfg" class="data"></table></div></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Источники: внутренний «Перечень проектов Freedom Holding Corp.» (03.11.2026); отчёты об устойчивом развитии FRHC FY2024–FY2026
+    (<a href="https://ir.freedomholdingcorp.com/esg-for-investors" target="_blank" rel="noopener">ir.freedomholdingcorp.com</a>);
+    отчёт Freedom Finance Global PLC 2025; <a href="https://frhc.fund" target="_blank" rel="noopener">frhc.fund</a>.
+    Проекты в EUR/USD/AMD не входят в суммы в тенге.
+  </footer>
+</div>
+<div id="tip" class="tip" hidden></div>
+<script src="data/data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
